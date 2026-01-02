@@ -1,0 +1,28 @@
+.graph-container {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.graph-container h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+/* Ensure Y-axis labels are fully visible */
+.graph-container .recharts-wrapper {
+  overflow: visible;
+}
+
+.graph-container .recharts-surface {
+  overflow: visible;
+}
+
+/* Center Y-axis label vertically */
+.graph-container .recharts-cartesian-axis-label {
+  dominant-baseline: middle;
+}

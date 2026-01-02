@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Typing speed test application" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <title>MatthewWrite</title>
+    <style>
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      // Only reset horizontal scroll on page load (preserve vertical scroll)
+      window.addEventListener('load', function() {
+        // Only reset horizontal scroll position, don't touch vertical
+        if (document.documentElement) {
+          document.documentElement.scrollLeft = 0;
+        }
+        if (document.body) {
+          document.body.scrollLeft = 0;
+        }
+      });
+      
+      // Prevent horizontal scrolling but allow vertical scrolling
+      window.addEventListener('scroll', function(e) {
+        // Only prevent horizontal scroll, allow vertical scroll
+        if (window.scrollX !== 0) {
+          window.scrollTo(0, window.scrollY);
+        }
+      }, { passive: true });
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

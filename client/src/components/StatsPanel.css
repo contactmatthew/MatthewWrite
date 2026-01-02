@@ -1,0 +1,50 @@
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.stat-label {
+  color: #cccccc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  color: #ffd700;
+  font-size: 1.8rem;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.stat-detail-value {
+  color: #ffd700;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.stat-subtext {
+  color: #888888;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}

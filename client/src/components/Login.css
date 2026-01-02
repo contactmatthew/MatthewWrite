@@ -1,0 +1,190 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background-color: #1a1a1a;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.login-box {
+  background-color: transparent;
+  padding: 2.5rem;
+  border-radius: 0;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* When Login is used in modal */
+.login-modal .login-box {
+  padding: 1rem;
+  box-shadow: none;
+}
+
+.login-modal .login-box h1 {
+  font-size: 1.1rem;
+  margin-bottom: 0.625rem;
+}
+
+.login-box h1 {
+  text-align: center;
+  margin: 0 0 0.75rem 0;
+  color: #ffd700;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.role-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background-color: #1a1a1a;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.role-selector button {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.role-selector button.active {
+  background-color: #ffd700;
+  color: #1a1a1a;
+}
+
+.role-selector button:hover:not(.active) {
+  color: #cccccc;
+  background-color: #2a2a2a;
+}
+
+.role-selector button.active:hover {
+  background-color: #ffed4e;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background-color: #1a1a1a;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.login-tabs button {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.login-tabs button.active {
+  background-color: #ffd700;
+  color: #1a1a1a;
+}
+
+.login-tabs button:hover:not(.active) {
+  color: #cccccc;
+  background-color: #2a2a2a;
+}
+
+.login-tabs button.active:hover {
+  background-color: #ffed4e;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.login-box input {
+  padding: 0.625rem;
+  background-color: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.login-box input::placeholder {
+  color: #666666;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #ffd700;
+  background-color: #222222;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.login-box button[type="submit"] {
+  padding: 0.625rem;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 6px;
+  color: #1a1a1a;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.125rem;
+}
+
+.login-box button[type="submit"]:hover:not(:disabled) {
+  background-color: #ffed4e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.login-box button[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-box button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.4rem;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  margin-bottom: 0.25rem;
+}
+

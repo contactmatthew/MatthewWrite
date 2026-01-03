@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SuperAdminDashboard.css';
 import TypingTest from './TypingTest';
+import Leaderboard from './Leaderboard';
 
 function SuperAdminDashboard({ user, onLogout }) {
   const [showTypingTest, setShowTypingTest] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [users, setUsers] = useState([]);
   const [allResults, setAllResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,6 +28,7 @@ function SuperAdminDashboard({ user, onLogout }) {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = async () => {
@@ -98,25 +101,22 @@ function SuperAdminDashboard({ user, onLogout }) {
 
   if (showTypingTest) {
     return (
-      <div>
-        <div style={{ padding: '10px', background: '#2a2a2a', textAlign: 'center' }}>
-          <button 
-            onClick={() => setShowTypingTest(false)} 
-            style={{ 
-              padding: '8px 16px', 
-              background: '#ffd700', 
-              color: '#1a1a1a', 
-              border: 'none', 
-              borderRadius: '4px', 
-              cursor: 'pointer',
-              fontWeight: '600'
-            }}
-          >
-            Back to Admin Dashboard
-          </button>
-        </div>
-        <TypingTest user={user} onLogin={() => {}} onLogout={onLogout} />
-      </div>
+      <TypingTest 
+        user={user} 
+        onLogin={() => {}} 
+        onLogout={onLogout}
+        onBack={() => setShowTypingTest(false)}
+      />
+    );
+  }
+
+  if (showLeaderboard) {
+    return (
+      <Leaderboard 
+        user={user} 
+        onLogout={onLogout}
+        onBack={() => setShowLeaderboard(false)}
+      />
     );
   }
 
@@ -127,6 +127,9 @@ function SuperAdminDashboard({ user, onLogout }) {
         <div className="user-info">
           <button onClick={() => setShowTypingTest(true)} className="typing-test-btn">
             Start Typing Test
+          </button>
+          <button onClick={() => setShowLeaderboard(true)} className="leaderboard-btn">
+            Leaderboard
           </button>
           <span>Super Admin: {user?.username}</span>
           <button onClick={onLogout} className="logout-btn">Logout</button>

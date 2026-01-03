@@ -5,7 +5,7 @@ import StatsPanel from './StatsPanel';
 import Graph from './Graph';
 import Login from './Login';
 
-function TypingTest({ user, onLogin, onLogout }) {
+function TypingTest({ user, onLogin, onLogout, onBack }) {
   const [showLogin, setShowLogin] = useState(false);
   const [text, setText] = useState('');
   const [userInput, setUserInput] = useState('');
@@ -232,7 +232,9 @@ function TypingTest({ user, onLogin, onLogout }) {
       });
       setErrorHistory(prev => {
         const newHistory = [...prev];
-        newHistory[currentSecond - 1] = incorrect;
+        // Track cumulative incorrect keystrokes (includes corrected mistakes)
+        const keystrokeStats = keystrokeStatsRef.current;
+        newHistory[currentSecond - 1] = keystrokeStats.incorrectKeystrokes;
         return newHistory;
       });
       setTimeHistory(prev => {
@@ -256,11 +258,9 @@ function TypingTest({ user, onLogin, onLogout }) {
     }
   };
 
+  // eslint-disable-next-line no-unused-vars
   const recalculateFinalStats = async (currentInput) => {
     if (!startTime || !isTestComplete) return;
-
-    const elapsedSeconds = (Date.now() - startTime) / 1000;
-    const elapsedMinutes = elapsedSeconds / 60;
 
     // Calculate characters stats with current input (including post-timer input)
     let correct = 0;
@@ -363,6 +363,7 @@ function TypingTest({ user, onLogin, onLogout }) {
         extra,
         missed
       },
+      errors: keystrokeStats.incorrectKeystrokes,
       consistency: Math.max(0, finalConsistency),
       testType,
       testDuration
@@ -371,7 +372,6 @@ function TypingTest({ user, onLogin, onLogout }) {
     // Save updated result to database if user is logged in
     if (user) {
       try {
-        const keystrokeStats = keystrokeStatsRef.current;
         await axios.post('/api/results', {
           wpm: finalWpm,
           accuracy: finalAccuracy,
@@ -401,9 +401,6 @@ function TypingTest({ user, onLogin, onLogout }) {
 
     // Final stats calculation (without calling finishTest again)
     if (!startTime) return;
-
-    const elapsedSeconds = (Date.now() - startTime) / 1000;
-    const elapsedMinutes = elapsedSeconds / 60;
 
     // Calculate characters stats - use current userInput
     let correct = 0;
@@ -524,6 +521,7 @@ function TypingTest({ user, onLogin, onLogout }) {
         extra,
         missed
       },
+      errors: keystrokeStats.incorrectKeystrokes,
       consistency: Math.max(0, finalConsistency),
       testType,
       testDuration
@@ -532,7 +530,6 @@ function TypingTest({ user, onLogin, onLogout }) {
     // Save initial result to database (will be updated if user continues typing)
     if (user) {
       try {
-        const keystrokeStats = keystrokeStatsRef.current;
         await axios.post('/api/results', {
           wpm: finalWpm,
           accuracy: finalAccuracy,
@@ -722,6 +719,9 @@ function TypingTest({ user, onLogin, onLogout }) {
       <div className="header">
         <h1>MatthewWrite</h1>
         <div className="user-info">
+          {onBack && (
+            <button onClick={onBack} className="back-btn">Back to Dashboard</button>
+          )}
           {user ? (
             <>
               <span>Welcome, {user.username}</span>
@@ -809,6 +809,7 @@ function TypingTest({ user, onLogin, onLogout }) {
           testType={testType}
           testDuration={testDuration}
           time={startTime ? Math.max(0, testDuration - Math.floor((Date.now() - startTime) / 1000)) : testDuration}
+          errors={keystrokeStatsRef.current.incorrectKeystrokes}
         />
 
         <div className="typing-area">
@@ -877,6 +878,10 @@ function TypingTest({ user, onLogin, onLogout }) {
               <div className="final-stat-value">
                 {finalResults.characters.typed}/{finalResults.characters.incorrect}/{finalResults.characters.extra}/{finalResults.characters.missed}
               </div>
+            </div>
+            <div className="final-stat-item">
+              <div className="final-stat-label">error letter count</div>
+              <div className="final-stat-value">{finalResults.errors || 0}</div>
             </div>
             <div className="final-stat-item">
               <div className="final-stat-label">consistency</div>

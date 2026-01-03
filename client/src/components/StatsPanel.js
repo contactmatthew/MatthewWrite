@@ -1,7 +1,7 @@
 import React from 'react';
 import './StatsPanel.css';
 
-function StatsPanel({ wpm, accuracy, rawWpm, characters, consistency, testType, testDuration, time }) {
+function StatsPanel({ wpm, accuracy, rawWpm, characters, consistency, testType, testDuration, time, errors }) {
   return (
     <div className="stats-panel">
       <div className="stat-item">
@@ -32,6 +32,11 @@ function StatsPanel({ wpm, accuracy, rawWpm, characters, consistency, testType, 
         <div className="stat-value">
           {characters.typed}/{characters.incorrect}/{characters.extra}/{characters.missed}
         </div>
+      </div>
+
+      <div className="stat-item">
+        <div className="stat-label">error letter count</div>
+        <div className="stat-value">{errors || 0}</div>
       </div>
 
       <div className="stat-item">

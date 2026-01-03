@@ -17,7 +17,7 @@ function Graph({ wpmHistory, errorHistory, timeHistory, testDuration }) {
     <div className="graph-container">
       <h3>Performance Graph</h3>
       <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data} margin={{ top: 5, right: 30, left: 50, bottom: 5 }}>
+        <LineChart data={data} margin={{ top: 5, right: 30, left: 50, bottom: 50 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#444444" />
           <XAxis 
             dataKey="time" 
@@ -51,7 +51,10 @@ function Graph({ wpmHistory, errorHistory, timeHistory, testDuration }) {
               color: '#ffffff'
             }}
           />
-          <Legend />
+          <Legend 
+            verticalAlign="bottom"
+            wrapperStyle={{ paddingTop: '20px' }}
+          />
           <Line 
             yAxisId="left"
             type="monotone" 

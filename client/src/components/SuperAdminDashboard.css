@@ -9,11 +9,11 @@
 
 .dashboard-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 30px;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 30px;
 }
 
 .dashboard-header h1 {
@@ -32,7 +32,8 @@
   color: #cccccc;
 }
 
-.typing-test-btn {
+.typing-test-btn,
+.leaderboard-btn {
   padding: 8px 16px;
   background-color: #ffd700;
   border: none;
@@ -44,7 +45,8 @@
   transition: background-color 0.2s;
 }
 
-.typing-test-btn:hover {
+.typing-test-btn:hover,
+.leaderboard-btn:hover {
   background-color: #ffed4e;
 }
 

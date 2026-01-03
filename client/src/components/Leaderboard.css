@@ -1,0 +1,179 @@
+.leaderboard-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.leaderboard-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.leaderboard-header h1 {
+  color: #ffd700;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.user-info span {
+  color: #cccccc;
+}
+
+.back-btn,
+.logout-btn {
+  padding: 8px 16px;
+  background-color: #3a3a3a;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.back-btn {
+  background-color: #ffd700;
+  color: #1a1a1a;
+}
+
+.back-btn:hover {
+  background-color: #ffed4e;
+}
+
+.logout-btn:hover {
+  background-color: #4a4a4a;
+}
+
+.leaderboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leaderboard-content h2 {
+  color: #ffd700;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.loading,
+.no-rankings {
+  text-align: center;
+  color: #888888;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+.rankings-table {
+  overflow-x: auto;
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.rankings-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankings-table th {
+  background-color: #1a1a1a;
+  color: #ffd700;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #4a4a4a;
+}
+
+.rankings-table td {
+  padding: 15px;
+  border-bottom: 1px solid #3a3a3a;
+  color: #cccccc;
+}
+
+.rankings-table tr:hover {
+  background-color: #333333;
+}
+
+.rankings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rankings-table tr.current-user {
+  background-color: rgba(255, 215, 0, 0.1);
+  border-left: 3px solid #ffd700;
+}
+
+.rank-cell {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.rank-number {
+  display: inline-block;
+  min-width: 50px;
+}
+
+.username-cell {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.you-badge {
+  color: #ffd700;
+  font-size: 0.85rem;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.wpm-cell {
+  color: #4ade80;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.avg-wpm-cell {
+  color: #60a5fa;
+}
+
+.tests-cell {
+  color: #888888;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .leaderboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rankings-table {
+    font-size: 0.85rem;
+  }
+
+  .rankings-table th,
+  .rankings-table td {
+    padding: 10px;
+  }
+}
+

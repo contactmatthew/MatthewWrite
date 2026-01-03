@@ -1,7 +1,26 @@
 {
-  "name": "typing-speed-client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@contactmatthew/matthewwrite-client",
+  "version": "1.0.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contactmatthew/MatthewWrite.git",
+    "directory": "client"
+  },
+  "keywords": [
+    "typing",
+    "speed",
+    "test",
+    "react",
+    "frontend",
+    "typing-test",
+    "wpm"
+  ],
+  "author": "contactmatthew",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

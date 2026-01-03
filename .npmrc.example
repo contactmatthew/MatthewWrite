@@ -1,0 +1,7 @@
+# GitHub Packages Configuration
+# Copy this file to .npmrc in your home directory or project root
+# Replace YOUR_GITHUB_TOKEN with a Personal Access Token with 'packages:read' and 'packages:write' permissions
+
+@contactmatthew:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+

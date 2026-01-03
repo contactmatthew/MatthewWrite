@@ -1,19 +1,39 @@
 {
-  "name": "typing-speed-app",
+  "name": "@contactmatthew/matthewwrite",
   "version": "1.0.0",
-  "description": "Typing speed test application with React and MySQL",
+  "description": "MatthewWrite - Full-featured typing speed test application with React frontend and Express backend",
   "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contactmatthew/MatthewWrite.git"
+  },
+  "keywords": [
+    "typing",
+    "speed",
+    "test",
+    "react",
+    "express",
+    "mysql",
+    "typing-test",
+    "wpm",
+    "typing-speed",
+    "matthewwrite"
+  ],
+  "author": "contactmatthew",
+  "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && node index.js",
     "client": "cd client && npm start",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "publish:server": "cd server && npm publish",
+    "publish:client": "cd client && npm publish"
   },
-  "keywords": ["typing", "speed", "test", "react", "mysql"],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
 

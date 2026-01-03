@@ -1,0 +1,41 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ## Changes in this Release
+            
+            See [CHANGELOG.md](../CHANGELOG.md) for detailed changes.
+            
+            ## Installation
+            
+            See [DEPLOYMENT.md](../DEPLOYMENT.md) for deployment instructions.
+            
+            ## Quick Start
+            
+            1. Clone the repository
+            2. Install dependencies: `npm install` in both `client/` and `server/`
+            3. Set up database (see `database/README.md`)
+            4. Configure environment variables
+            5. Start server: `cd server && npm start`
+            6. Start client: `cd client && npm start`
+          draft: false
+          prerelease: false
+

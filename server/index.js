@@ -263,6 +263,38 @@ app.get('/api/results', authenticateToken, async (req, res) => {
   }
 });
 
+// Get public leaderboard (user rankings by best WPM) - only for logged-in users
+app.get('/api/leaderboard', authenticateToken, async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    
+    const [rankings] = await connection.query(
+      `SELECT 
+        u.id,
+        u.username,
+        u.created_at as user_created_at,
+        MAX(tr.wpm) as best_wpm,
+        ROUND(AVG(tr.wpm), 2) as average_wpm,
+        COUNT(tr.id) as total_tests
+      FROM users u
+      INNER JOIN typing_results tr ON u.id = tr.user_id
+      WHERE (u.role = 'user' OR u.role IS NULL)
+      GROUP BY u.id, u.username, u.created_at
+      ORDER BY MAX(tr.wpm) DESC, AVG(tr.wpm) DESC
+      LIMIT 100`
+    );
+
+    console.log('Leaderboard query returned', rankings.length, 'users');
+    connection.release();
+
+    res.json(rankings);
+  } catch (error) {
+    console.error('Get leaderboard error:', error);
+    console.error('Error details:', error.message);
+    res.status(500).json({ error: 'Server error fetching leaderboard', details: error.message });
+  }
+});
+
 // Admin routes - require superadmin role
 const requireSuperAdmin = (req, res, next) => {
   if (req.user.role !== 'superadmin') {

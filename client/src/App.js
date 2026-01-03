@@ -4,6 +4,7 @@ import TypingTest from './components/TypingTest';
 import UserDashboard from './components/UserDashboard';
 import SuperAdminDashboard from './components/SuperAdminDashboard';
 import axios from 'axios';
+import './config'; // Initialize axios base URL
 
 function App() {
   const [user, setUser] = useState(null);

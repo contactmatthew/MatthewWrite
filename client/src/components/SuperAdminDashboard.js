@@ -50,11 +50,20 @@ function SuperAdminDashboard({ user, onLogout }) {
   const calculateStats = (usersData, resultsData) => {
     const totalUsers = usersData.length;
     const totalTests = resultsData.length;
-    const averageWpm = totalTests > 0 
-      ? Math.round(resultsData.reduce((sum, r) => sum + r.wpm, 0) / totalTests)
+    
+    // Calculate average WPM - handle null, undefined, and NaN values
+    const validWpmData = resultsData.filter(r => r.wpm != null && !isNaN(r.wpm));
+    const averageWpm = validWpmData.length > 0
+      ? Math.round(validWpmData.reduce((sum, r) => sum + Number(r.wpm), 0) / validWpmData.length)
       : 0;
-    const averageAccuracy = totalTests > 0
-      ? Math.round(resultsData.reduce((sum, r) => sum + r.accuracy, 0) / totalTests)
+    
+    // Calculate average accuracy - handle null, undefined, and NaN values
+    const validAccuracyData = resultsData.filter(r => {
+      const acc = Number(r.accuracy);
+      return acc != null && !isNaN(acc) && isFinite(acc);
+    });
+    const averageAccuracy = validAccuracyData.length > 0
+      ? Math.round(validAccuracyData.reduce((sum, r) => sum + Number(r.accuracy), 0) / validAccuracyData.length)
       : 0;
 
     setStats({ totalUsers, totalTests, averageWpm, averageAccuracy });

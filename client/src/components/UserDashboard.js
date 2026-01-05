@@ -41,9 +41,25 @@ function UserDashboard({ user, onLogout }) {
     }
 
     const totalTests = data.length;
-    const averageWpm = Math.round(data.reduce((sum, r) => sum + r.wpm, 0) / totalTests);
-    const averageAccuracy = Math.round(data.reduce((sum, r) => sum + r.accuracy, 0) / totalTests);
-    const bestWpm = Math.max(...data.map(r => r.wpm));
+    
+    // Calculate average WPM
+    const validWpmData = data.filter(r => r.wpm != null && !isNaN(r.wpm));
+    const averageWpm = validWpmData.length > 0
+      ? Math.round(validWpmData.reduce((sum, r) => sum + Number(r.wpm), 0) / validWpmData.length)
+      : 0;
+    
+    // Calculate average accuracy - handle null, undefined, and NaN values
+    const validAccuracyData = data.filter(r => {
+      const acc = Number(r.accuracy);
+      return acc != null && !isNaN(acc) && isFinite(acc);
+    });
+    const averageAccuracy = validAccuracyData.length > 0
+      ? Math.round(validAccuracyData.reduce((sum, r) => sum + Number(r.accuracy), 0) / validAccuracyData.length)
+      : 0;
+    
+    // Calculate best WPM
+    const wpmValues = data.map(r => Number(r.wpm)).filter(wpm => !isNaN(wpm) && wpm != null);
+    const bestWpm = wpmValues.length > 0 ? Math.max(...wpmValues) : 0;
 
     setStats({ totalTests, averageWpm, averageAccuracy, bestWpm });
   };

@@ -369,4 +369,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Made with ❤️ by [contactmatthew](https://github.com/contactmatthew)
 
+---
+
+*Last updated: January 2026*
+
 </div>

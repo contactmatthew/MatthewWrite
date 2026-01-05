@@ -3,6 +3,8 @@ import './App.css';
 import TypingTest from './components/TypingTest';
 import UserDashboard from './components/UserDashboard';
 import SuperAdminDashboard from './components/SuperAdminDashboard';
+import Footer from './components/Footer';
+import SupportButton from './components/SupportButton';
 import axios from 'axios';
 import './config'; // Initialize axios base URL
 
@@ -55,6 +57,8 @@ function App() {
   return (
     <div className="App">
       {renderContent()}
+      <Footer />
+      <SupportButton />
     </div>
   );
 }

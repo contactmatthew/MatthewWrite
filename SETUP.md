@@ -59,7 +59,7 @@ npm run install-all
    
    **Note for XAMPP**: By default, XAMPP MySQL has no password. Leave `DB_PASSWORD` empty or set it to an empty string.
 
-## Step 3: Start the Application
+## Step 3: Start the Application.
 
 ### Option 1: Start both frontend and backend together
 ```bash

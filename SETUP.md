@@ -80,7 +80,7 @@ cd client
 npm start
 ```
 
-## Troubleshooting
+## Troubleshooting.
 
 ### Proxy Error (ECONNREFUSED)
 This means the backend server isn't running. Make sure:
